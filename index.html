@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedido de Namoro</title>
+  <style>
+    body {
+      background-color: #ff99cc; /* Rosa */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    #opcoes {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .opcao {
+      background-color: #ff6699; /* Cor de destaque */
+      color: #fff;
+      padding: 15px 30px;
+      margin: 0 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+
+    .opcao:hover {
+      background-color: #e65c8f; /* Cor mais escura ao passar o mouse */
+    }
+
+    #nao {
+      position: absolute;
+      animation: moveInfinito 1s infinite alternate;
+    }
+
+    @keyframes moveInfinito {
+      to {
+        left: 0;
+        top: 0;
+      }
+    }
+
+    #resposta {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <h1 style="color: #e65c8f;">Pedido de Namoro</h1>
+  <img src="foto.png" alt="Foto do Casal" width="250" style="border-radius: 50%;">
+  <p style="margin-top: 20px;">Aceita namorar comigo?</p>
+  <div id="opcoes">
+    <button class="opcao" onclick="responderSim()">Sim</button>
+    <button id="nao" class="opcao" onmouseover="mudarDirecao()">Não</button>
+  </div>
+  <p id="resposta"></p>
+
+  <script>
+    function responderSim() {
+      document.getElementById('resposta').innerText = "Eu te amo muito, minha querida!";
+    }
+
+    function mudarDirecao() {
+      const nao = document.getElementById('nao');
+      const container = document.getElementById('container');
+      const containerRect = container.getBoundingClientRect();
+
+      const randomLeft = Math.floor(Math.random() * (containerRect.width - nao.clientWidth));
+      const randomTop = Math.floor(Math.random() * (containerRect.height - nao.clientHeight));
+
+      nao.style.left = `${randomLeft}px`;
+      nao.style.top = `${randomTop}px`;
+    }
+  </script>
+</div>
+
+</body>
+</html>
